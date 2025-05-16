@@ -1,0 +1,311 @@
+/* ===== NEOMORPHIC FLYING INPUT ===== */
+#input-container {
+    position: fixed !important;
+    bottom: 32px !important;
+    left: 50% !important;
+    transform: translateX(-50%) perspective(1000px) rotateX(0deg) !important;
+    width: calc(100% - 64px) !important;
+    max-width: 880px !important;
+    padding: 12px 24px !important;
+    background: linear-gradient(145deg, #f8f9fa, #ffffff) !important;
+    border-radius: 32px !important;
+    box-shadow:
+        0 24px 64px -16px rgba(0, 0, 0, 0.15),
+        0 12px 48px -12px rgba(0, 0, 0, 0.1),
+        inset 1px 1px 2px rgba(255, 255, 255, 0.8),
+        inset -1px -1px 2px rgba(0, 0, 0, 0.05) !important;
+    backdrop-filter: blur(32px) saturate(180%) !important;
+    -webkit-backdrop-filter: blur(32px) saturate(180%) !important;
+    border: none !important;
+    z-index: 1000 !important;
+    transition:
+        transform 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        box-shadow 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+        width 0.4s ease,
+        background 0.4s ease !important;
+    will-change: transform, box-shadow !important;
+    overflow: hidden !important;
+    animation: floating-shadow 8s infinite alternate !important;
+}
+
+@keyframes floating-shadow {
+    0% { box-shadow:
+        0 24px 64px -16px rgba(0, 0, 0, 0.15),
+        0 12px 48px -12px rgba(0, 0, 0, 0.1),
+        inset 1px 1px 2px rgba(255, 255, 255, 0.8),
+        inset -1px -1px 2px rgba(0, 0, 0, 0.05) !important; }
+    100% { box-shadow:
+        0 32px 72px -12px rgba(0, 0, 0, 0.2),
+        0 16px 56px -8px rgba(0, 0, 0, 0.15),
+        inset 1px 1px 2px rgba(255, 255, 255, 0.9),
+        inset -1px -1px 2px rgba(0, 0, 0, 0.03) !important; }
+}
+
+/* Dark Theme */
+body.dark-theme #input-container {
+    background: linear-gradient(145deg, #1a1a1a, #2d2d2d) !important;
+    box-shadow:
+        0 24px 64px -16px rgba(0, 0, 0, 0.35),
+        0 12px 48px -12px rgba(0, 0, 0, 0.25),
+        inset 1px 1px 1px rgba(255, 255, 255, 0.05),
+        inset -1px -1px 1px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Hover Effect */
+#input-container:hover {
+    transform: translateX(-50%) perspective(1000px) rotateX(5deg) translateY(-12px) scale(1.02) !important;
+    box-shadow:
+        0 32px 80px -12px rgba(0, 0, 0, 0.25),
+        0 20px 60px -8px rgba(0, 0, 0, 0.18),
+        inset 2px 2px 4px rgba(255, 255, 255, 0.9),
+        inset -2px -2px 4px rgba(0, 0, 0, 0.08) !important;
+    background: linear-gradient(145deg, #ffffff, #f8f9fa) !important;
+}
+
+body.dark-theme #input-container:hover {
+    background: linear-gradient(145deg, #2d2d2d, #1a1a1a) !important;
+}
+
+/* Focus Effect */
+#input-container:focus-within {
+    transform: translateX(-50%) perspective(1000px) rotateX(8deg) translateY(-16px) scale(1.03) !important;
+    box-shadow:
+        0 40px 96px -8px rgba(0, 123, 255, 0.3),
+        0 24px 72px -4px rgba(0, 123, 255, 0.2),
+        inset 3px 3px 6px rgba(255, 255, 255, 0.95),
+        inset -3px -3px 6px rgba(0, 0, 0, 0.1) !important;
+    animation: focus-pulse 2s infinite alternate !important;
+}
+
+@keyframes focus-pulse {
+    0% { box-shadow:
+        0 40px 96px -8px rgba(0, 123, 255, 0.3),
+        0 24px 72px -4px rgba(0, 123, 255, 0.2),
+        inset 3px 3px 6px rgba(255, 255, 255, 0.95),
+        inset -3px -3px 6px rgba(0, 0, 0, 0.1) !important; }
+    100% { box-shadow:
+        0 48px 112px -4px rgba(0, 123, 255, 0.4),
+        0 32px 88px 0 rgba(0, 123, 255, 0.3),
+        inset 4px 4px 8px rgba(255, 255, 255, 1),
+        inset -4px -4px 8px rgba(0, 0, 0, 0.12) !important; }
+}
+
+/* Text Input */
+#user-input {
+    width: 100% !important;
+    min-height: 64px !important;
+    max-height: 240px !important;
+    padding: 20px 88px 20px 32px !important;
+    background: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    color: #111 !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    font-family: 'SF Pro Display', -apple-system, system-ui, sans-serif !important;
+    resize: none !important;
+    outline: none !important;
+    line-height: 1.6 !important;
+    transition: all 0.4s ease !important;
+    caret-color: #007bff !important;
+    text-shadow: 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+}
+
+body.dark-theme #user-input {
+    color: rgba(255, 255, 255, 0.95) !important;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Floating Icons */
+#attach-file-icon,
+#voice-input-icon,
+#send-icon {
+    position: absolute !important;
+    bottom: 16px !important;
+    width: 48px !important;
+    height: 48px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    border-radius: 50% !important;
+    cursor: pointer !important;
+    transition:
+        transform 0.4s cubic-bezier(0.2, 0.9, 0.1, 1.3),
+        box-shadow 0.4s ease,
+        background 0.4s ease !important;
+    z-index: 2 !important;
+    backdrop-filter: blur(12px) !important;
+    -webkit-backdrop-filter: blur(12px) !important;
+    box-shadow:
+        0 4px 12px rgba(0, 0, 0, 0.08),
+        0 2px 6px rgba(0, 0, 0, 0.05) !important;
+}
+
+#attach-file-icon {
+    right: 80px !important;
+    background: rgba(255, 255, 255, 0.7) !important;
+    color: #555 !important;
+}
+
+#voice-input-icon {
+    right: 80px !important;
+    background: rgba(255, 255, 255, 0.7) !important;
+    color: #555 !important;
+}
+
+#send-icon {
+    right: 20px !important;
+    background: linear-gradient(135deg, #007bff, #0062cc) !important;
+    color: white !important;
+    box-shadow:
+        0 6px 20px rgba(0, 123, 255, 0.3),
+        0 3px 10px rgba(0, 123, 255, 0.2) !important;
+}
+
+/* Icon Hover Effects */
+#attach-file-icon:hover,
+#voice-input-icon:hover {
+    transform: translateY(-6px) scale(1.15) rotate(5deg) !important;
+    background: rgba(255, 255, 255, 0.9) !important;
+    box-shadow:
+        0 8px 24px rgba(0, 0, 0, 0.12),
+        0 4px 12px rgba(0, 0, 0, 0.08) !important;
+}
+
+#send-icon:hover {
+    transform: translateY(-6px) scale(1.15) !important;
+    background: linear-gradient(135deg, #0069d9, #0056b3) !important;
+    box-shadow:
+        0 10px 28px rgba(0, 123, 255, 0.4),
+        0 5px 15px rgba(0, 123, 255, 0.3) !important;
+}
+
+/* Active States */
+#voice-input-icon.listening {
+    animation:
+        pulse-record 1.5s infinite,
+        icon-float 3s infinite ease-in-out !important;
+    background: rgba(255, 59, 48, 0.2) !important;
+    color: #ff3b30 !important;
+}
+
+@keyframes icon-float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(2deg); }
+}
+
+/* Attached Files Container */
+#attached-files-container {
+    position: absolute !important;
+    bottom: calc(100% + 16px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    background: rgba(255, 255, 255, 0.98) !important;
+    backdrop-filter: blur(32px) saturate(200%) !important;
+    -webkit-backdrop-filter: blur(32px) saturate(200%) !important;
+    border-radius: 28px !important;
+    padding: 24px !important;
+    box-shadow:
+        0 32px 80px -12px rgba(0, 0, 0, 0.2),
+        0 16px 56px -8px rgba(0, 0, 0, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.5) !important;
+    max-height: 360px !important;
+    overflow-y: auto !important;
+    opacity: 0 !important;
+    transform: translateY(40px) scale(0.9) perspective(1000px) rotateX(-15deg) !important;
+    transform-origin: bottom center !important;
+    transition:
+        opacity 0.6s cubic-bezier(0.2, 0.9, 0.1, 1.2),
+        transform 0.6s cubic-bezier(0.2, 0.9, 0.1, 1.2) !important;
+    z-index: -1 !important;
+    pointer-events: none !important;
+}
+
+#attached-files-container.show {
+    opacity: 1 !important;
+    transform: translateY(0) scale(1) rotateX(0deg) !important;
+    pointer-events: auto !important;
+    z-index: 999 !important;
+}
+
+/* Centered Mode */
+#input-container.centered {
+    position: absolute !important;
+    top: 50% !important;
+    left: 50% !important;
+    transform: translate(-50%, -50%) perspective(1000px) rotateX(5deg) !important;
+    bottom: auto !important;
+    width: calc(100% - 120px) !important;
+    max-width: 680px !important;
+    animation:
+        super-float 6s infinite ease-in-out,
+        glow-pulse 8s infinite alternate !important;
+}
+
+@keyframes super-float {
+    0%, 100% { transform: translate(-50%, -50%) rotateX(5deg) translateY(0) rotate(0.5deg); }
+    50% { transform: translate(-50%, -50%) rotateX(8deg) translateY(-24px) rotate(-0.5deg); }
+}
+
+@keyframes glow-pulse {
+    0% { box-shadow:
+        0 24px 64px -16px rgba(0, 0, 0, 0.15),
+        0 12px 48px -12px rgba(0, 0, 0, 0.1),
+        inset 1px 1px 2px rgba(255, 255, 255, 0.8),
+        inset -1px -1px 2px rgba(0, 0, 0, 0.05); }
+    100% { box-shadow:
+        0 32px 80px -8px rgba(0, 123, 255, 0.25),
+        0 20px 60px -4px rgba(0, 123, 255, 0.2),
+        inset 2px 2px 4px rgba(255, 255, 255, 0.9),
+        inset -2px -2px 4px rgba(0, 0, 0, 0.08); }
+}
+
+/* Advanced Effects */
+#input-container::before {
+    content: '' !important;
+    position: absolute !important;
+    top: -2px !important;
+    left: -2px !important;
+    right: -2px !important;
+    bottom: -2px !important;
+    background: linear-gradient(135deg,
+        rgba(0, 123, 255, 0.1),
+        rgba(0, 198, 255, 0.05),
+        rgba(0, 123, 255, 0.1)) !important;
+    border-radius: 34px !important;
+    z-index: -1 !important;
+    opacity: 0 !important;
+    transition: opacity 0.6s ease !important;
+}
+
+#input-container:focus-within::before {
+    opacity: 1 !important;
+}
+
+/* Mobile Adaptation */
+@media (max-width: 768px) {
+    #input-container {
+        width: calc(100% - 40px) !important;
+        padding: 12px 16px !important;
+        border-radius: 28px !important;
+    }
+
+    #user-input {
+        min-height: 56px !important;
+        padding: 16px 72px 16px 24px !important;
+        font-size: 16px !important;
+    }
+
+    #attach-file-icon,
+    #voice-input-icon {
+        right: 68px !important;
+        width: 44px !important;
+        height: 44px !important;
+    }
+
+    #send-icon {
+        right: 16px !important;
+        width: 44px !important;
+        height: 44px !important;
+    }
+}
